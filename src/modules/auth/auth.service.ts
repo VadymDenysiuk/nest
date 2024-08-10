@@ -33,8 +33,8 @@ export class AuthService {
 
     const token = await this.tokenService.generateJwtToken(dto.email);
 
-    console.log(token, 'token');
+    const user = await this.userService.publicUser(dto.email);
 
-    return { ...existUser, token };
+    return { ...user, token };
   }
 }
